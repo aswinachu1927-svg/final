@@ -1,0 +1,11 @@
+<div class="container d-flex flex-wrap gap-4 justify-content-center">
+ @for (item of products; track item.mal_id) {
+
+<app-card [item]="item"></app-card>
+
+} @empty {
+<div class="spinner-grow" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+}
+</div>

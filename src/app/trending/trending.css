@@ -1,0 +1,45 @@
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: darkorange;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  .card {
+    background-color: #000000;
+    color: darkorange;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .desc {
+    font-size: 13px;
+    color: #fefefe;
+  }

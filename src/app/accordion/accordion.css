@@ -1,0 +1,38 @@
+.anime-accordion{
+max-width:900px;
+margin:auto;
+}
+
+.anime-accordion .accordion-item{
+background:#111;
+border:1px solid #2a2a2a;
+margin-bottom:10px;
+border-radius:10px;
+overflow:hidden;
+}
+
+.anime-accordion .accordion-button{
+background:#141414;
+color:#fff;
+font-weight:500;
+}
+
+.anime-accordion .accordion-button:not(.collapsed){
+background:#ff2c55;
+color:white;
+box-shadow:none;
+}
+
+.anime-accordion .accordion-body{
+background:#0e0e0e;
+color:#ccc;
+line-height:1.6;
+}
+
+.anime-accordion .accordion-button:focus{
+box-shadow:none;
+}
+
+.anime-accordion .accordion-button::after{
+filter:invert(1);
+}

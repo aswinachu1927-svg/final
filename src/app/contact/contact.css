@@ -1,0 +1,117 @@
+.community-contact{
+background:#0e0e0e;
+padding:60px 20px;
+color:white;
+}
+
+.section-title{
+text-align:center;
+font-size:32px;
+margin-bottom:10px;
+}
+
+.section-subtitle{
+text-align:center;
+color:#aaa;
+margin-bottom:40px;
+}
+
+.community-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+max-width:1000px;
+margin:auto;
+}
+
+/* Contact box */
+.contact-box{
+background:#171717;
+padding:25px;
+border-radius:10px;
+}
+
+.contact-form{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.contact-form input,
+.contact-form textarea{
+background:#1f1f1f;
+border:1px solid #333;
+padding:10px;
+border-radius:6px;
+color:white;
+}
+
+.contact-btn{
+background:#ff2c55;
+border:none;
+padding:10px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.contact-btn:hover{
+background:#ff4f75;
+}
+
+
+/* Comment section */
+
+.comment-box{
+background:#171717;
+padding:25px;
+border-radius:10px;
+}
+
+.comment-form{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-bottom:20px;
+}
+
+.comment-form input,
+.comment-form textarea{
+background:#1f1f1f;
+border:1px solid #333;
+padding:10px;
+border-radius:6px;
+color:white;
+}
+
+.comment-btn{
+background:#ff2c55;
+border:none;
+padding:8px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
+
+.comment-list{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.comment{
+background:#1a1a1a;
+padding:10px;
+border-radius:6px;
+border-left:3px solid #ff2c55;
+}
+
+.comment h4{
+margin:0 0 5px 0;
+}
+
+.comment p{
+margin:0;
+color:#ccc;
+}

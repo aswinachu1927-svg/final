@@ -1,0 +1,20 @@
+<br>
+<div class="product-card">
+  <div class="product-image">
+    <img [src]="item.images.jpg.image_url" alt="{{item.title}}">
+
+    <div class="product-overlay">
+      <p class="product-description">{{item.type}}</p>
+    </div>
+  </div>
+
+  <div class="product-body">
+    <h5 class="product-title">{{item.title}}</h5>
+
+    <p class="product-price">Episodes: {{item.episodes}}</p>
+
+    <button [routerLink]="['/Details', item.mal_id]" class="btn btn-secondary">
+      View Details
+    </button>
+  </div>
+</div>
