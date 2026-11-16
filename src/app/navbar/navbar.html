@@ -1,59 +1,68 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<nav class="navbar navbar-expand-lg acz-navbar">
+  <div class="container-fluid">
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink=""><strong>ACZAnime</strong></a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                    <a class="nav-link active" routerLink="">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="Animes">Animes</a>
-                </li>
-
-                <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-        Genres
+    <a class="navbar-brand acz-brand" routerLink="">
+      <span class="brand-mark">A</span>
+      <span class="brand-word">ACZ<span class="brand-anime">_ANIME</span></span>
     </a>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Adventure</a></li>
-        <li><a class="dropdown-item" href="#">Romance</a></li>
-        <li><a class="dropdown-item" href="#">Drama</a></li>
-        <li><a class="dropdown-item" href="#">Horror</a></li>
-        <li><a class="dropdown-item" href="#">Game</a></li>
-        <li><a class="dropdown-item" href="#">Fantasy</a></li>
-        <li><a class="dropdown-item" href="#">Sci-Fi</a></li>
-    </ul>
-</li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="Contact">Contact</a>
-                </li>
+    <button class="navbar-toggler acz-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="aczt-bars" aria-hidden="true"></span>
+    </button>
 
-            </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 acz-nav">
 
-            <div class="d-flex align-items-center gap-3 ms-3 social-icons">
-    <a href="#"><i class="bi bi-instagram"></i></a>
-</div>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink=""><span class="nav-index">01</span>Home</a>
+        </li>
 
-        </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="Animes"><span class="nav-index">02</span>Index</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="Courses"><span class="nav-index">03</span>Courses</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <span class="nav-index">04</span>Genres
+          </a>
+          <ul class="dropdown-menu acz-menu">
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="action">Action</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="adventure">Adventure</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="romance">Romance</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="drama">Drama</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="horror">Horror</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="game">Game</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="fantasy">Fantasy</a></li>
+            <li><a class="dropdown-item" routerLink="/Animes" fragment="sci-fi">Sci-Fi</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="Contact"><span class="nav-index">05</span>Contact</a>
+        </li>
+
+      </ul>
+
+      <form class="d-flex acz-search" role="search" action="/Animes" method="get">
+        <input class="form-control me-2" type="search" name="q" placeholder="SEARCH THE ARCHIVE…" aria-label="Search">
+        <button class="btn acz-search-btn" type="submit">GO</button>
+      </form>
+
+      <div class="d-flex align-items-center gap-2 ms-lg-3 social-icons">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+            class="bi bi-instagram"></i></a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i
+            class="bi bi-youtube"></i></a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X"><i
+            class="bi bi-twitter-x"></i></a>
+      </div>
+
     </div>
+  </div>
 </nav>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

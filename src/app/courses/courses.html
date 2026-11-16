@@ -1,0 +1,63 @@
+﻿<section class="acz-section acz-courses">
+
+  <div class="container">
+
+    <div class="acz-head">
+      <span class="acz-eyebrow"><span class="star">â–ª</span> ACZ Academy</span>
+      <h1 class="acz-title acz-title--chrome">Anime Courses</h1>
+      <hr class="acz-rule">
+      <p class="acz-subtitle">Learn the craft behind the shows â€” art, voice, music and design courses taught by working creators.</p>
+    </div>
+
+    <div class="row g-4">
+
+      @for (course of courses; track course.id) {
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="card retro-card course-card">
+
+          <div class="course-cover">
+            <img [src]="course.cover" [alt]="course.title">
+            <span class="course-level">{{ course.level }}</span>
+            <span class="course-category">{{ course.category }}</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="course-title">{{ course.title }}</h3>
+            <p class="course-subtitle">{{ course.subtitle }}</p>
+
+            <div class="course-meta">
+              <span class="acz-chip">{{ course.lessonCount }} Lessons</span>
+              <span class="acz-chip">{{ course.duration }}</span>
+              <span class="acz-chip">{{ course.students }} Students</span>
+            </div>
+
+            <div class="course-foot">
+              <span class="course-mentor">
+                <i class="bi bi-person-badge"></i> {{ course.mentor }}
+              </span>
+              <span class="course-rating">
+                <i class="bi bi-star-fill"></i> {{ course.rating }}
+              </span>
+            </div>
+
+            <a class="acz-btn course-btn" [routerLink]="['/Course', course.id]">
+              View Course
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      }
+
+    </div>
+
+    <div class="acz-cta">
+      <p>Not sure where to start?</p>
+      <a class="acz-btn acz-btn--ghost" routerLink="/Contact">Ask a Mentor</a>
+    </div>
+
+  </div>
+
+</section>

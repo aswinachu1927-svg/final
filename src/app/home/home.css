@@ -1,0 +1,128 @@
+/* ==========================================================================
+   HOME — page composition
+   ========================================================================== */
+
+app-home {
+  display: block;
+}
+
+app-home app-trending,
+app-home app-upcoming,
+app-home app-accordion,
+app-home app-contact {
+  display: block;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   Academy teaser — gold-numbered cards on a deep surface
+   -------------------------------------------------------------------------- */
+.acz-course-teaser {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.teaser-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.teaser-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 1.4rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.teaser-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.teaser-card:hover {
+  color: var(--ink);
+  transform: translateY(-5px);
+  border-color: rgba(217, 164, 65, 0.45);
+  box-shadow: var(--shadow-accent);
+}
+
+.teaser-card:hover::after {
+  opacity: 1;
+}
+
+.teaser-no {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 144;
+  font-size: 2.2rem;
+  line-height: 0.9;
+  color: var(--accent);
+}
+
+.teaser-title {
+  font-family: var(--font-display);
+  font-weight: 550;
+  font-variation-settings: 'opsz' 72;
+  font-size: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-top: 0.4rem;
+  color: var(--ink);
+}
+
+.teaser-sub {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.teaser-go {
+  margin-top: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  border-top: 1px solid var(--line);
+  padding-top: 0.75rem;
+}
+
+.acz-cta {
+  margin-top: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line-strong);
+  padding-top: 1.5rem;
+}
+
+.acz-cta p {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink-soft);
+}

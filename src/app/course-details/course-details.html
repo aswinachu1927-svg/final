@@ -1,0 +1,80 @@
+<section class="acz-section acz-course-detail">
+
+  <div class="container">
+
+    <nav class="crumb">
+      <a routerLink="/">Home</a>
+      <span>/</span>
+      <a routerLink="/Courses">Courses</a>
+      <span>/</span>
+      <span class="crumb-current">{{ course.title }}</span>
+    </nav>
+
+    <div class="course-hero">
+
+      <div class="course-hero-text">
+
+        <span class="course-tag">{{ course.category }} · {{ course.level }}</span>
+
+        <h1 class="course-name">{{ course.title }}</h1>
+
+        <p class="course-lede">{{ course.description }}</p>
+
+        <div class="course-facts">
+          <span class="acz-chip">{{ course.lessonCount }} Lessons</span>
+          <span class="acz-chip">{{ course.duration }}</span>
+          <span class="acz-chip">Mentor: {{ course.mentor }}</span>
+          <span class="acz-chip">{{ course.rating }} ★</span>
+          <span class="acz-chip">{{ course.students }} Students</span>
+        </div>
+
+        <div class="course-actions">
+          <a class="acz-btn" routerLink="/Contact">Enrol Now</a>
+          <a class="acz-btn acz-btn--ghost" routerLink="/Courses">All Courses</a>
+        </div>
+
+      </div>
+
+      <div class="course-hero-cover">
+        <img [src]="course.cover" [alt]="course.title">
+      </div>
+
+    </div>
+
+    <div class="syllabus">
+
+      <div class="acz-head">
+        <span class="acz-eyebrow"><span class="star">▪</span> Syllabus</span>
+        <h2 class="acz-title acz-title--chrome">What You Will Learn</h2>
+        <hr class="acz-rule">
+      </div>
+
+      @for (module of course.modules; track module.name) {
+
+      <div class="module">
+
+        <div class="module-head">
+          <span class="module-no">M{{ $index + 1 }}</span>
+          <h3>{{ module.name }}</h3>
+          <span class="module-count">{{ module.lessons.length }} lessons</span>
+        </div>
+
+        <ul class="lesson-list">
+          @for (lesson of module.lessons; track lesson.title) {
+          <li class="lesson">
+            <i class="bi bi-play-circle"></i>
+            <span class="lesson-title">{{ lesson.title }}</span>
+            <span class="lesson-time">{{ lesson.duration }}</span>
+          </li>
+          }
+        </ul>
+
+      </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>

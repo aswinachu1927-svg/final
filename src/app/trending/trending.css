@@ -1,45 +1,132 @@
-  body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-  }
+/* ==========================================================================
+   TRENDING — THE CHART, midnight luxury index
+   ========================================================================== */
 
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: darkorange;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
+.acz-trending {
+  background: var(--paper);
+}
 
-  .card {
-    background-color: #000000;
-    color: darkorange;
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
+/* --- shared index card (mirrored in upcoming.css) --- */
+.retro-card {
+  position: relative;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  height: 100%;
+}
 
-  .card:hover {
-    transform: scale(1.05);
-  }
+.retro-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-accent);
+  border-color: rgba(217, 164, 65, 0.45);
+}
 
-  .card img {
-    height: 200px;
-    object-fit: cover;
-  }
+.retro-card .img-fluid {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-bottom: 1px solid var(--line);
+  filter: grayscale(0.85) brightness(0.8) contrast(1.1);
+  transition: filter 0.35s ease;
+}
 
-  .card-body {
-    padding: 10px;
-    text-align: center;
-  }
+.retro-card:hover .img-fluid {
+  filter: grayscale(0.05) brightness(0.95) contrast(1.08);
+}
 
-  .title {
-    font-size: 16px;
-    font-weight: bold;
-  }
+.card-body {
+  padding: 1.1rem 1.15rem 1.2rem;
+}
 
-  .desc {
-    font-size: 13px;
-    color: #fefefe;
+.rank-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--accent-bright);
+  background: rgba(11, 9, 8, 0.72);
+  backdrop-filter: blur(6px);
+  padding: 0.5rem 0.75rem;
+  border-right: 1px solid rgba(217, 164, 65, 0.5);
+  border-bottom: 1px solid rgba(217, 164, 65, 0.5);
+  border-bottom-right-radius: 10px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 550;
+  font-variation-settings: 'opsz' 72;
+  font-size: 1.45rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+}
+
+.desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  min-height: 2.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.75rem;
+}
+
+.card-link {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-bright);
+  transition: color 0.2s ease;
+}
+
+.card-link:hover {
+  color: var(--accent);
+}
+
+.acz-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.acz-cta p {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .retro-card .img-fluid {
+    height: 210px;
   }
+}

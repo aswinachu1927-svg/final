@@ -1,11 +1,26 @@
-<div class="container d-flex flex-wrap gap-4 justify-content-center">
- @for (item of products; track item.mal_id) {
+<section class="acz-section acz-library">
 
-<app-card [item]="item"></app-card>
+  <div class="container">
 
-} @empty {
-<div class="spinner-grow" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-}
-</div>
+    <div class="acz-head">
+      <span class="acz-eyebrow"><span class="star">▪</span> The Index</span>
+      <h1 class="acz-title acz-title--chrome">All Animes</h1>
+      <hr class="acz-rule">
+      <p class="acz-subtitle">The ranked catalogue — pulled live from the Tenrai database.</p>
+    </div>
+
+    <div class="anime-grid">
+      @for (item of products; track item.mal_id) {
+
+      <app-card [item]="item"></app-card>
+
+      } @empty {
+      <div class="spinner-grow acz-spinner" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    }
+    </div>
+
+  </div>
+
+</section>

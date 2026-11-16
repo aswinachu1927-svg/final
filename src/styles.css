@@ -1,6 +1,345 @@
-/* You can add global styles to this file, and also import other style files */
-body{
+﻿/* ==========================================================================
+   ACZ ANIME â€” CINEMATIC DARK & GOLD DESIGN SYSTEM
+   Warm charcoal, antique gold, ivory type. Film-noir luxury.
+   ========================================================================== */
 
-background-color:#141414;
-color:#fff;
+:root {
+  /* palette */
+  --ink: #ece5d3;            /* primary text: warm ivory */
+  --ink-soft: #a89f8a;       /* muted text */
+  --paper: #100e0c;          /* page background: warm near-black */
+  --paper-2: #171410;        /* raised panel */
+  --paper-3: #1f1b16;        /* inputs / wells */
+  --surface: #141109;        /* deep section surface */
+  --accent: #d9a441;         /* antique gold */
+  --accent-deep: #b98432;    /* deep gold */
+  --accent-bright: #f2c866;  /* highlight gold */
+  --line: rgba(236, 229, 211, 0.14);      /* hairline on dark */
+  --line-strong: rgba(236, 229, 211, 0.24);
+
+  /* structure */
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 14px 36px rgba(217, 164, 65, 0.22);
+  --border: 1px solid var(--line);
+  --border-thick: 2px solid var(--line-strong);
+
+  /* type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* legacy aliases (kept so older references degrade gracefully) */
+  --acz-ink: var(--ink);
+  --acz-ink-soft: var(--ink-soft);
+  --acz-plum: var(--surface);
+  --acz-cream: var(--ink);
+  --acz-paper: var(--paper);
+  --acz-paper-2: var(--paper-2);
+  --acz-sun: var(--accent);
+  --acz-orange: var(--accent-deep);
+  --acz-hot: var(--accent);
+  --acz-violet: var(--ink-soft);
+  --acz-cyan: var(--accent-bright);
+  --acz-mint: var(--accent-bright);
+  --acz-stroke: var(--line-strong);
+  --acz-shadow-hard: var(--shadow);
+  --acz-shadow-soft: var(--shadow-sm);
+  --acz-shadow-hot: var(--shadow-accent);
+  --acz-border-thick: var(--border-thick);
+  --font-pixel: var(--font-mono);
+
+  /* bootstrap bridge */
+  --bs-body-font-family: var(--font-body);
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--paper);
+  --bs-border-color: var(--line-strong);
+  --bs-link-color: var(--accent);
+  --bs-link-hover-color: var(--accent-bright);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(1200px 600px at 75% -10%, rgba(217, 164, 65, 0.07), transparent 60%),
+    radial-gradient(900px 700px at -10% 30%, rgba(217, 164, 65, 0.05), transparent 55%);
+  background-attachment: fixed;
+}
+
+app-root {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 60;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--accent);
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: #17110a;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-deep);
+  border: 3px solid var(--paper-2);
+  border-radius: 99px;
+}
+
+/* --------------------------------------------------------------------------
+   Shared utilities
+   -------------------------------------------------------------------------- */
+
+.acz-section {
+  position: relative;
+  padding: 4rem 0 4.5rem;
+}
+
+.pixel-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* eyebrow â€” gold mono label with a hairline */
+.acz-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  padding: 0.2rem 0.1rem;
+}
+
+.acz-eyebrow .star {
+  color: var(--accent-bright);
+}
+
+/* big section title â€” light Fraunces, italic accent word */
+.acz-title {
+  position: relative;
+  display: block;
+  margin: 0.9rem 0 0.4rem;
+  font-family: var(--font-display);
+  font-weight: 550;
+  font-variation-settings: 'opsz' 144;
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  line-height: 0.98;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.acz-title--chrome {
+  font-style: italic;
+  font-weight: 600;
+  color: transparent;
+  background: linear-gradient(100deg, var(--accent-bright) 0%, var(--accent) 38%, var(--accent-deep) 62%, var(--accent) 82%, var(--accent-bright) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gold-sheen 6s ease-in-out infinite;
+}
+
+@keyframes gold-sheen {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.acz-subtitle {
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0.8rem auto 0;
+  font-size: 1.02rem;
+  font-weight: 400;
+}
+
+.acz-head {
+  text-align: left;
+  border-top: 1px solid var(--accent);
+  padding-top: 1.25rem;
+  margin-bottom: 2.6rem;
+  position: relative;
+}
+
+.acz-head .acz-subtitle {
+  margin-left: 0;
+}
+
+.acz-rule {
+  height: 1px;
+  border: 0;
+  margin: 1.25rem 0 0;
+  max-width: 140px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+/* small gold-outlined chips */
+.acz-chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(217, 164, 65, 0.5);
+  border-radius: 999px;
+  background: rgba(217, 164, 65, 0.08);
+  color: var(--accent-bright);
+}
+
+/* primary button â€” gold, Fraunces label */
+.acz-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #17110a;
+  background: linear-gradient(160deg, var(--accent-bright), var(--accent) 55%, var(--accent-deep));
+  border: 1px solid var(--accent-bright);
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  box-shadow: var(--shadow-accent);
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.acz-btn:hover {
+  filter: brightness(1.08);
+  color: #17110a;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(217, 164, 65, 0.32);
+}
+
+.acz-btn:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ghost variant â€” ivory outline */
+.acz-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+}
+
+.acz-btn--ghost:hover {
+  background: var(--paper-3);
+  border-color: var(--accent);
+  color: var(--accent-bright);
+  box-shadow: none;
+}
+
+/* film grain overlay (legacy class kept for compat) */
+.acz-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(236, 229, 211, 0.05) 0.5px, transparent 0.5px);
+  background-size: 5px 5px;
+  opacity: 0.6;
+}
+
+.acz-rays {
+  display: none;
+}
+
+/* marquee ticker â€” black strip, gold mono type */
+.acz-ticker {
+  overflow: hidden;
+  background: #0b0908;
+  color: var(--accent-bright);
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.4rem 0;
+}
+
+.acz-ticker-inner {
+  display: inline-block;
+  animation: acz-marquee 32s linear infinite;
+}
+
+.acz-ticker-inner em {
+  color: var(--ink-soft);
+  font-style: normal;
+  padding: 0 1.4rem;
+}
+
+@keyframes acz-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ------------------------------------------------------------------
+   Responsive helpers
+   ------------------------------------------------------------------ */
+@media (max-width: 767px) {
+  .acz-section {
+    padding: 2.6rem 0 3rem;
+  }
 }

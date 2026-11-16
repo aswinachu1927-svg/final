@@ -1,0 +1,23 @@
+/* ==========================================================================
+   THE INDEX — ranked anime catalogue, dark showroom
+   ========================================================================== */
+
+.acz-library {
+  background: var(--paper);
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.acz-spinner {
+  color: var(--accent);
+  grid-column: 1 / -1;
+  margin: 3rem auto;
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+}

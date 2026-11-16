@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+﻿import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Carousel } from "./carousel/carousel";
 import { Navbar } from "./navbar/navbar";
@@ -11,5 +11,5 @@ import { Footer } from "./footer/footer";
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('AniHome');
+  protected readonly title = signal('ACZ ANIME');
 }

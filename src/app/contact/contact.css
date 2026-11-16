@@ -1,117 +1,220 @@
-.community-contact{
-background:#0e0e0e;
-padding:60px 20px;
-color:white;
+/* ==========================================================================
+   CONTACT — midnight salon, gold fixtures
+   ========================================================================== */
+
+.acz-contact {
+  position: relative;
+  padding: 4rem 0 4.5rem;
+  background: var(--surface);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
-.section-title{
-text-align:center;
-font-size:32px;
-margin-bottom:10px;
+.acz-contact .acz-title {
+  color: var(--ink);
 }
 
-.section-subtitle{
-text-align:center;
-color:#aaa;
-margin-bottom:40px;
+.community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
-.community-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-max-width:1000px;
-margin:auto;
+/* ---------------- panels ---------------- */
+.contact-box,
+.comment-box {
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Contact box */
-.contact-box{
-background:#171717;
-padding:25px;
-border-radius:10px;
+/* thin gold hairline at the top edge */
+.contact-box::before,
+.comment-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-.contact-form{
-display:flex;
-flex-direction:column;
-gap:12px;
+.contact-box h3,
+.comment-box h3 {
+  font-family: var(--font-display);
+  font-weight: 550;
+  font-variation-settings: 'opsz' 60;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.75rem;
+}
+
+/* ---------------- form ---------------- */
+.contact-form,
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .contact-form input,
-.contact-form textarea{
-background:#1f1f1f;
-border:1px solid #333;
-padding:10px;
-border-radius:6px;
-color:white;
-}
-
-.contact-btn{
-background:#ff2c55;
-border:none;
-padding:10px;
-border-radius:6px;
-color:white;
-cursor:pointer;
-transition:0.3s;
-}
-
-.contact-btn:hover{
-background:#ff4f75;
-}
-
-
-/* Comment section */
-
-.comment-box{
-background:#171717;
-padding:25px;
-border-radius:10px;
-}
-
-.comment-form{
-display:flex;
-flex-direction:column;
-gap:10px;
-margin-bottom:20px;
-}
-
+.contact-form textarea,
 .comment-form input,
-.comment-form textarea{
-background:#1f1f1f;
-border:1px solid #333;
-padding:10px;
-border-radius:6px;
-color:white;
+.comment-form textarea {
+  background: var(--paper-3);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.comment-btn{
-background:#ff2c55;
-border:none;
-padding:8px;
-border-radius:6px;
-color:white;
-cursor:pointer;
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.comment-form input::placeholder,
+.comment-form textarea::placeholder {
+  color: rgba(236, 229, 211, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-.comment-list{
-display:flex;
-flex-direction:column;
-gap:10px;
+.contact-form input:focus,
+.contact-form textarea:focus,
+.comment-form input:focus,
+.comment-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.16);
 }
 
-.comment{
-background:#1a1a1a;
-padding:10px;
-border-radius:6px;
-border-left:3px solid #ff2c55;
+/* buttons */
+.contact-btn,
+.comment-btn {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #17110a;
+  background: linear-gradient(160deg, var(--accent-bright), var(--accent) 60%, var(--accent-deep));
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
-.comment h4{
-margin:0 0 5px 0;
+.contact-btn:hover,
+.comment-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
 }
 
-.comment p{
-margin:0;
-color:#ccc;
+/* ---------------- contact info ---------------- */
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 0;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.6rem;
+}
+
+.contact-info a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.contact-info a:hover {
+  color: var(--accent-bright);
+}
+
+.contact-info i {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  color: var(--accent-bright);
+  background: rgba(217, 164, 65, 0.1);
+  border: 1px solid rgba(217, 164, 65, 0.4);
+  border-radius: 50%;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ---------------- comments ---------------- */
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.3rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.comment {
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.comment h4 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.66rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin: 0 0 0.4rem;
+}
+
+.comment p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-box,
+  .comment-box {
+    padding: 1.4rem;
+  }
 }

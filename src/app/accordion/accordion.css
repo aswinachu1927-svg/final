@@ -1,38 +1,96 @@
-.anime-accordion{
-max-width:900px;
-margin:auto;
+/* ==========================================================================
+   FAQ — midnight dossier entries
+   ========================================================================== */
+
+.acz-faq {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
 }
 
-.anime-accordion .accordion-item{
-background:#111;
-border:1px solid #2a2a2a;
-margin-bottom:10px;
-border-radius:10px;
-overflow:hidden;
+.anime-accordion {
+  max-width: 880px;
+  margin: 0;
 }
 
-.anime-accordion .accordion-button{
-background:#141414;
-color:#fff;
-font-weight:500;
+.anime-accordion .accordion-item {
+  position: relative;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
-.anime-accordion .accordion-button:not(.collapsed){
-background:#ff2c55;
-color:white;
-box-shadow:none;
+.anime-accordion .accordion-item:hover {
+  border-color: rgba(217, 164, 65, 0.4);
+  transform: translateY(-2px);
 }
 
-.anime-accordion .accordion-body{
-background:#0e0e0e;
-color:#ccc;
-line-height:1.6;
+.anime-accordion .accordion-button {
+  font-family: var(--font-display);
+  font-weight: 550;
+  font-variation-settings: 'opsz' 48;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  background: transparent;
+  padding: 1.1rem 1.2rem;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-.anime-accordion .accordion-button:focus{
-box-shadow:none;
+.anime-accordion .accordion-button:not(.collapsed) {
+  color: var(--accent-bright);
+  background: rgba(217, 164, 65, 0.05);
+  box-shadow: none;
 }
 
-.anime-accordion .accordion-button::after{
-filter:invert(1);
+.anime-accordion .accordion-button:focus {
+  box-shadow: none;
+  border: 0;
+}
+
+.anime-accordion .accordion-button::after {
+  filter: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a89f8a'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  transition: transform 0.25s ease;
+}
+
+.anime-accordion .accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d9a441'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  transform: rotate(-180deg);
+}
+
+.anime-accordion .accordion-body {
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.75;
+  padding: 1.1rem 1.2rem 1.3rem;
+  border-top: 1px solid rgba(217, 164, 65, 0.25);
+}
+
+/* gold index-number sticker in each header */
+.q-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-right: 0.7rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #17110a;
+  background: linear-gradient(160deg, var(--accent-bright), var(--accent) 70%, var(--accent-deep));
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.anime-accordion .accordion-button:not(.collapsed) .q-mark {
+  filter: brightness(1.1);
 }

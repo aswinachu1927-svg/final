@@ -1,63 +1,72 @@
-<section class="community-contact">
+﻿<section class="community-contact acz-contact" id="contact">
 
-<div class="container">
+  <div class="container">
 
-<h2 class="section-title">Contact & Community</h2>
-<p class="section-subtitle">Send us a message or ask anime questions</p>
+    <div class="acz-head">
+      <span class="acz-eyebrow"><span class="star">â–ª</span> Signal Us</span>
+      <h2 class="acz-title acz-title--chrome">Contact &amp; Community</h2>
+      <hr class="acz-rule">
+      <p class="acz-subtitle">Send a message to the studio desk, or put your question to the community.</p>
+    </div>
 
-<div class="community-grid">
+    <div class="community-grid">
 
-<!-- Contact Form -->
-<div class="contact-box">
+      <!-- Contact Form -->
+      <div class="contact-box">
 
-<h3>Contact Us</h3>
+        <h3>Contact Us</h3>
 
-<form class="contact-form">
+        <form class="contact-form" action="/Contact" method="get">
 
-<input type="text" placeholder="Your Name" required>
+          <input type="text" name="name" placeholder="Your Name" required>
 
-<input type="email" placeholder="Your Email" required>
+          <input type="email" name="email" placeholder="Your Email" required>
 
-<textarea placeholder="Your message..." rows="4"></textarea>
+          <textarea name="message" placeholder="Your message..." rows="4" required></textarea>
 
-<button type="submit" class="contact-btn">Send Message</button>
+          <button type="submit" class="contact-btn">Send Message</button>
 
-</form>
+        </form>
 
-</div>
+        <ul class="contact-info">
+          <li><i class="bi bi-envelope-paper"></i> <a href="mailto:desk@aczanime.tv">desk@aczanime.tv</a></li>
+          <li><i class="bi bi-discord"></i> <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">ACZ ANIME Discord</a></li>
+          <li><i class="bi bi-clock-history"></i> Replies within 24 hours</li>
+        </ul>
 
+      </div>
 
-<!-- Comment Section -->
-<div class="comment-box">
+      <!-- Comment Section -->
+      <div class="comment-box">
 
-<h3>Community Questions</h3>
+        <h3>Community Questions</h3>
 
-<div class="comment-form">
-<input type="text" id="username" placeholder="Your name">
+        <form class="comment-form" action="/Contact" method="get">
+          <input type="text" id="username" name="name" placeholder="Your name">
 
-<textarea id="commentInput" placeholder="Ask your question about anime..."></textarea>
+          <textarea id="commentInput" name="question" placeholder="Ask your question about anime..."></textarea>
 
-<button onclick="addComment()" class="comment-btn">Post Question</button>
-</div>
+          <button type="submit" class="comment-btn">Post Question</button>
+        </form>
 
-<div id="commentList" class="comment-list">
+        <div id="commentList" class="comment-list">
 
-<div class="comment">
-<h4>AnimeFan99</h4>
-<p>Is Solo Leveling getting a season 2?</p>
-</div>
+          <div class="comment">
+            <h4>AnimeFan99</h4>
+            <p>Is Solo Leveling getting a season 2?</p>
+          </div>
 
-<div class="comment">
-<h4>OtakuWorld</h4>
-<p>Where can I watch Frieren with English subtitles?</p>
-</div>
+          <div class="comment">
+            <h4>OtakuWorld</h4>
+            <p>Where can I watch Frieren with English subtitles?</p>
+          </div>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </section>

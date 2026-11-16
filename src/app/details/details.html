@@ -1,46 +1,232 @@
-<br>
-<br>
-<div class="container">
+﻿<section class="acz-section details-page">
 
-<div class="product-card">
+  @if (product) {
 
-<div class="row">
+  <!-- ================= backdrop hero ================= -->
+  <div class="details-hero" [style.backgroundImage]="'url(' + (product.images?.jpg?.large_image_url || product.images?.jpg?.image_url) + ')'">
+    <div class="details-hero-overlay"></div>
 
-<div class="col-md-6 text-center">
-<img [src]="product.images.jpg.image_url" class="product-img">
-</div>
+    <div class="container details-hero-inner">
 
-<div class="col-md-6">
+      <nav class="details-crumb">
+        <a routerLink="/">Home</a>
+        <span class="crumb-sep">/</span>
+        <a routerLink="/Animes">The Index</a>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-current">{{ product.title }}</span>
+      </nav>
 
-<span class="category">{{ product.type }}</span>
+      <div class="details-kicker">
+        <span class="kicker-dot"></span>
+        {{ product.type }} Â· {{ product.episodes }} Episodes
+      </div>
 
-<h2>{{ product.title }}</h2>
+      <h1 class="details-hero-title">{{ product.title }}</h1>
 
-<div class="rating">
-⭐ Score: {{ product.score }}
-</div>
+      <div class="details-hero-stats">
+        <span class="hero-stat"><span class="hero-stat-label">Score</span><span class="hero-stat-value"><i class="bi bi-star-fill"></i>{{ product.score }}</span></span>
+        <span class="hero-stat-divider"></span>
+        <span class="hero-stat"><span class="hero-stat-label">Rank</span><span class="hero-stat-value">#{{ product.rank }}</span></span>
+        <span class="hero-stat-divider"></span>
+        <span class="hero-stat"><span class="hero-stat-label">Format</span><span class="hero-stat-value">{{ product.type }}</span></span>
+      </div>
 
-<h3>Rank: {{ product.rank }}</h3>
+      <p class="details-synopsis">{{ product.synopsis }}</p>
 
-<p>{{ product.synopsis }}</p>
+      <div class="details-hero-actions">
+        <a class="acz-btn" [routerLink]="['/Watch', id]"><i class="bi bi-play-fill"></i> Watch Now</a>
+        <a class="acz-btn acz-btn--ghost" href="/Animes">Add to List</a>
+      </div>
 
-<div class="anime-buttons">
+    </div>
+  </div>
 
-<button class="watch-btn">
- Watch Now
-</button>
+  <!-- ================= explore tabs ================= -->
+  <div class="container details-body">
 
-<button class="list-btn">
- Add to List
-</button>
+    <div class="extras-head">
+      <span class="details-kicker small"><span class="kicker-dot"></span>Explore the Archive</span>
 
-</div>
+      <div class="extras-buttons" role="tablist">
+        <button class="extras-tab" role="tab" [class.active]="activeTab === 'recommendations'" (click)="showTab('recommendations')">
+          Recommendations
+        </button>
+        <button class="extras-tab" role="tab" [class.active]="activeTab === 'characters'" (click)="showTab('characters')">
+          Characters
+        </button>
+        <button class="extras-tab" role="tab" [class.active]="activeTab === 'episodes'" (click)="showTab('episodes')">
+          Episodes
+        </button>
+        <button class="extras-tab" role="tab" [class.active]="activeTab === 'videos'" (click)="showTab('videos')">
+          Videos
+        </button>
+        <button class="extras-tab" role="tab" [class.active]="activeTab === 'news'" (click)="showTab('news')">
+          News
+        </button>
+      </div>
+    </div>
 
-</div>
+    @if (activeTab) {
+    <div class="extras-panel">
 
-</div>
+      @if (extrasLoading) {
+      <div class="spinner-grow acz-spinner" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      } @else if (activeTab === 'recommendations') {
 
-</div>
+        @if (recommendations.length) {
+        <div class="extras-grid">
+          @for (rec of recommendations; track rec.entry?.mal_id) {
+          <a class="extra-card" [routerLink]="['/Details', rec.entry?.mal_id]">
+            <img [src]="rec.entry?.images?.jpg?.small_image_url || rec.entry?.images?.jpg?.image_url" [alt]="rec.entry?.title" loading="lazy">
+            <span class="extra-title">{{ rec.entry?.title }}</span>
+            <span class="extra-meta"><i class="bi bi-hand-thumbs-up-fill"></i> {{ rec.votes }}</span>
+          </a>
+          }
+        </div>
+        } @else {
+        <p class="extras-empty">No recommendations right now â€” the Tenrai API may be unreachable.</p>
+        }
 
-</div>
-<br>
+      } @else if (activeTab === 'characters') {
+
+        @if (characters.length) {
+        <div class="extras-grid characters-grid">
+          @for (c of characters; track c.character?.mal_id) {
+          <div class="extra-card character-card">
+            <img [src]="c.character?.images?.jpg?.image_url" [alt]="c.character?.name" loading="lazy">
+            <span class="extra-title">{{ c.character?.name }}</span>
+            <span class="extra-meta role-badge" [class.role-main]="c.role === 'Main'">{{ c.role }}</span>
+          </div>
+          }
+        </div>
+        } @else {
+        <p class="extras-empty">No character data right now â€” the Tenrai API may be unreachable.</p>
+        }
+
+      } @else if (activeTab === 'episodes') {
+
+        @if (episodes.length) {
+        <div class="episode-list">
+          @for (ep of episodes; track ep.mal_id) {
+          <div class="episode-row">
+            <span class="episode-number">{{ ep.mal_id }}</span>
+            <div class="episode-info">
+              <span class="episode-title">{{ ep.title }}</span>
+              <span class="episode-meta">
+                @if (ep.aired) {<span>{{ ep.aired.slice(0, 10) }}</span>}
+                @if (ep.score) {<span><i class="bi bi-star-fill"></i> {{ ep.score }}</span>}
+                @if (ep.filler) {<span class="filler-badge">FILLER</span>}
+                @if (ep.recap) {<span class="filler-badge recap-badge">RECAP</span>}
+              </span>
+            </div>
+          </div>
+          }
+        </div>
+        } @else {
+        <p class="extras-empty">No episode data right now â€” the Tenrai API may be unreachable.</p>
+        }
+
+      } @else if (activeTab === 'videos') {
+
+        @if (videos.promo?.length || videos.episodes?.length) {
+        <div class="videos-wrap">
+
+          @if (videos.promo?.length) {
+          <h3 class="videos-section-label">Trailers &amp; PVs</h3>
+          <div class="videos-grid">
+            @for (v of videos.promo; track v.trailer?.youtube_id) {
+            <div class="video-card">
+              @if (playingVideoId === v.trailer?.youtube_id) {
+              <div class="video-frame">
+                <iframe [src]="embedUrlFor(v.trailer?.youtube_id)" title="{{ v.trailer?.title }}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              } @else {
+              <button class="video-thumb" type="button" (click)="playVideo(v.trailer?.youtube_id)" [attr.aria-label]="'Play ' + v.trailer?.title">
+                <img [src]="v.trailer?.images?.medium_image_url || v.trailer?.images?.image_url" [alt]="v.trailer?.title" loading="lazy">
+                <span class="video-play"><i class="bi bi-play-fill"></i></span>
+              </button>
+              }
+              <div class="video-body">
+                <span class="video-title">{{ v.title }}</span>
+                <span class="video-meta">
+                  @if (v.trailer?.views !== undefined) {<span><i class="bi bi-eye"></i> {{ formatViews(v.trailer?.views) }}</span>}
+                  @if (v.trailer?.published_at) {<span><i class="bi bi-calendar3"></i> {{ v.trailer.published_at.slice(0, 10) }}</span>}
+                </span>
+              </div>
+            </div>
+            }
+          </div>
+          }
+
+          @if (videos.episodes?.length) {
+          <h3 class="videos-section-label">Episode Videos</h3>
+          <div class="episode-videos-grid">
+            @for (e of videos.episodes; track e.mal_id) {
+            <a class="ep-video-card" [href]="e.url" target="_blank" rel="noopener noreferrer">
+              @if (e.images?.jpg?.image_url) {
+              <img [src]="e.images.jpg.image_url" [alt]="e.title" loading="lazy">
+              } @else {
+              <div class="ep-video-noimage"><i class="bi bi-film"></i></div>
+              }
+              <span class="ep-video-label">{{ e.episode }}</span>
+              <span class="ep-video-title">{{ e.title }}</span>
+            </a>
+            }
+          </div>
+          }
+
+        </div>
+        } @else {
+        <p class="extras-empty">No videos right now â€” the Tenrai API may be unreachable.</p>
+        }
+
+      } @else if (activeTab === 'news') {
+
+        @if (news.length) {
+        <div class="news-list">
+          @for (item of news; track item.mal_id) {
+          <a class="news-item" [href]="item.url" target="_blank" rel="noopener noreferrer">
+            @if (item.images?.jpg?.image_url) {
+            <img class="news-img" [src]="item.images.jpg.image_url" [alt]="item.title" loading="lazy">
+            }
+            <div class="news-body">
+              <span class="news-title">{{ item.title }}</span>
+              <span class="news-meta">
+                @if (item.date) {<span>{{ item.date.slice(0, 10) }}</span>}
+                @if (item.author_username) {<span>by {{ item.author_username }}</span>}
+                @if (item.comments !== undefined) {<span><i class="bi bi-chat-dots"></i> {{ item.comments }}</span>}
+              </span>
+              <span class="news-excerpt">{{ item.excerpt }}</span>
+            </div>
+          </a>
+          }
+        </div>
+        } @else {
+        <p class="extras-empty">No news right now â€” the Tenrai API may be unreachable.</p>
+        }
+
+      }
+
+    </div>
+    } @else {
+    <p class="extras-hint">Pick a tab to explore this title's archive entry â€” recommendations, characters, episodes, videos and news.</p>
+    }
+
+    <div class="details-footer-line">
+      <span>Want to make anime like this?</span>
+      <a href="/Courses">Explore ACZ Academy courses â†’</a>
+    </div>
+
+  </div>
+
+  } @else {
+  <div class="container">
+    <div class="spinner-grow acz-spinner" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  }
+
+</section>

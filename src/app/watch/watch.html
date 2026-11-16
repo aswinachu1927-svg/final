@@ -1,0 +1,114 @@
+<section class="watch-page">
+
+  <!-- ================= banner ================= -->
+  <div class="watch-banner" [style.backgroundImage]="'url(' + (selected?.images?.jpg?.image_url || product?.images?.jpg?.large_image_url || product?.images?.jpg?.image_url) + ')'">
+    <div class="watch-banner-overlay"></div>
+
+    <div class="container watch-banner-inner">
+
+      <nav class="details-crumb">
+        <a routerLink="/">Home</a>
+        <span class="crumb-sep">/</span>
+        <a routerLink="/Animes">The Index</a>
+        <span class="crumb-sep">/</span>
+        @if (product) {
+        <a [routerLink]="['/Details', id]">{{ product.title }}</a>
+        <span class="crumb-sep">/</span>
+        }
+        <span class="crumb-current">Watch</span>
+      </nav>
+
+      <div class="watch-kicker"><span class="kicker-dot"></span>Now Streaming</div>
+
+      <h1 class="watch-title">{{ product?.title || 'Loading…' }}</h1>
+
+      @if (selected) {
+      <div class="watch-now-line">
+        <span class="watch-ep-badge">{{ selected.episode }}</span>
+        <span class="watch-ep-title">{{ selected.title }}</span>
+      </div>
+      }
+
+    </div>
+  </div>
+
+  <!-- ================= body ================= -->
+  <div class="container watch-body">
+
+    @if (loading) {
+    <div class="watch-spinner-wrap">
+      <div class="spinner-grow acz-spinner" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    } @else if (!episodes.length) {
+    <div class="watch-empty">
+      <i class="bi bi-camera-video-off"></i>
+      <h2>No episode videos for this title yet</h2>
+      <p>The Tenrai API returned no streamable episode data, or the service is unreachable right now. Try again later, or check the full details page.</p>
+      <a class="acz-btn" [routerLink]="['/Details', id]">Back to Details</a>
+    </div>
+    } @else {
+
+    <!-- ======== stage ======== -->
+    <div class="watch-stage">
+      <div class="player-frame">
+        @if (selected?.images?.jpg?.image_url) {
+        <img class="player-still" [src]="selected.images.jpg.image_url" [alt]="selected.title">
+        } @else {
+        <div class="player-noimage"><i class="bi bi-film"></i></div>
+        }
+        <a class="player-cta" [href]="selected?.url" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-play-circle-fill"></i>
+          <span>Watch {{ selected?.episode }}</span>
+        </a>
+      </div>
+
+      <div class="watch-stage-side">
+        <span class="watch-side-label">Episode {{ selected?.mal_id }}</span>
+        <h2 class="watch-side-title">{{ selected?.title }}</h2>
+        <p class="watch-side-note">Episodes open on MyAnimeList, powered by Tenrai metadata. Sub/dub availability varies by region.</p>
+
+        <div class="watch-side-facts">
+          <div class="watch-fact">
+            <span class="fact-label">Type</span>
+            <span class="fact-value">{{ product?.type || '—' }}</span>
+          </div>
+          <div class="watch-fact">
+            <span class="fact-label">Score</span>
+            <span class="fact-value"><i class="bi bi-star-fill"></i> {{ product?.score || '—' }}</span>
+          </div>
+          <div class="watch-fact">
+            <span class="fact-label">Episodes</span>
+            <span class="fact-value">{{ episodes.length }}</span>
+          </div>
+        </div>
+
+        <a class="acz-btn watch-back" [routerLink]="['/Details', id]"><i class="bi bi-info-circle"></i> Full Details</a>
+      </div>
+    </div>
+
+    <!-- ======== episode rail ======== -->
+    <div class="watch-rail-head">
+      <span class="rail-label"><span class="kicker-dot"></span>All Episodes</span>
+      <span class="rail-count">{{ episodes.length }} entries</span>
+    </div>
+
+    <div class="episode-rail">
+      @for (ep of episodes; track ep.mal_id) {
+      <button class="rail-card" type="button" [class.active]="selected?.mal_id === ep.mal_id" (click)="select(ep)">
+        @if (ep.images?.jpg?.image_url) {
+        <img [src]="ep.images.jpg.image_url" [alt]="ep.title" loading="lazy">
+        } @else {
+        <div class="rail-noimage"><i class="bi bi-film"></i></div>
+        }
+        <span class="rail-ep">{{ ep.episode }}</span>
+        <span class="rail-title">{{ ep.title }}</span>
+      </button>
+      }
+    </div>
+
+    }
+
+  </div>
+</section>
